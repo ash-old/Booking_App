@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnCoversToTables extends Migration
+class AddColumnStatusToBookings extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddColumnCoversToTables extends Migration
      */
     public function up()
     {
-        Schema::table('tables', function (Blueprint $table) {
-            $table->integer('covers')->after('name');
-            
-
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->string('status')->after('notes');
         });
     }
 
@@ -27,8 +25,8 @@ class AddColumnCoversToTables extends Migration
      */
     public function down()
     {
-        Schema::table('tables', function (Blueprint $table) {
-            $table->dropColumn('covers');
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->dropColumn('status');
         });
     }
 }
