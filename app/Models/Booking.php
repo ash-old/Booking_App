@@ -11,4 +11,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Booking extends Model
 {
     protected $table = 'bookings';
+
+    public function table()
+    {
+        return $this->hasOne(Table::class, "id", "table_id");
+    }
+
+    public function status()
+    {
+        return $this->hasOne(BookingStatus::class, "id", "status_id");
+    }
 }

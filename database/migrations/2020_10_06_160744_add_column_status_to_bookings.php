@@ -14,7 +14,7 @@ class AddColumnStatusToBookings extends Migration
     public function up()
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->string('status')->after('notes');
+            $table->bigInteger('status_id')->after('notes')->unsigned();
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnStatusToBookings extends Migration
     public function down()
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->dropColumn('status_id');
         });
     }
 }
